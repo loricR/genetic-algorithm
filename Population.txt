@@ -1,0 +1,20 @@
+initPop() -> Population
+Données:
+Résultat: Population (une liste d'Individus) générée aléatoirement
+Lexique:
+
+triQualiteDec(l : Population) -> Population
+Données: la Population à trier
+Résultat: Population triée par qualité décroissante des Individus
+Lexique:
+
+meilleursIndiv(l : Population, tSelect : entier) -> Population
+Données: la Population de base
+         entier correspondant à l'endroit où il faut tronquer la Population
+Résultat: Population des meilleurs Individus en tronquant la liste et en la complétant par recopie des tSelect premiers éléments
+Lexique:
+
+croiserPop(l : Population) -> Population
+Données: la Population qu'il faut croiser
+Résultat: Population constituée d'Individus sélectionnés aléatoirement deux à deux dans la Population de base et croisés entre eux
+Lexique:

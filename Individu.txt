@@ -1,0 +1,24 @@
+initIndiv() -> Individu
+Données:
+Résultat: liste de bits générée aléatoirement
+Lexique:
+
+initIndiv_recursif() -> Individu
+Données:
+Résultat: liste de bits générée aléatoirement
+Lexique:
+
+decodeListe(l : Individu) -> entier
+Données: la liste de bits à décoder
+Résultat: l'entier correspondant à la liste de bits donnée
+Lexique:
+
+croiserListes(l1 : Individu, l2 : Individu) -> Individu
+Données:
+Résultat:
+Lexique:
+
+qualiteIndiv(l : Individu) -> réel
+Données: la liste de bits Individu à calculer sa qualité
+Résultat: réel correspondant à la qualité de l'individu donné
+Lexique:
