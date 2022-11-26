@@ -16,7 +16,7 @@ int decodeList(List l){
 
 }
 
-void croiserList(float pCroise, List l1, List l2) {
+Individu croiserList(float pCroise, List l1, List l2) {
 
 }
 

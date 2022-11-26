@@ -30,25 +30,25 @@ Algo :
 				
 				
 
-croiserListes(pCroise : entier, l1 : Individu, l2 : Individu) -> Individu (ou plutôt void, on peut pas renvoyer 2 listes)
+croiserListes(pCroise : réel, l1 : Individu, l2 : Individu) -> Individu 
 Données: pCroise probabilité d'intervertir des éléments des 2 listes, l1 et l2 deux liste de bits
-Résultat: l1 et l2 les deux listes de bits dont certains éléments on été intervertis
+Résultat: l3 la liste de bits caractérisant l'individu résultant des éléments intervertis de l1 et l2
 Lexique:
 	
 Algo :
 
-	Bit temp
+	List l3 := NULL;
 	Si l1 et l2 ne sont pas vides, Alors
-		Si nombre aléatoire entre 0 et pCroise = pCroise Alors
-			temp = l1->val
-			l1->val = l2->val
-			l2->val = temp
-			croiserListes(pCroise, l1, l2) = croiserListes(pCroise, l1->next, l2->next)
+		Si réel aléatoire entre 0 et 1 <= pCroise Alors
+			l3->val := l1->val
+			l3->next := croiserListes(pCroise, l1->next, l2->next)
 		Sinon
-			croiserListes(pCroise, l1, l2) = croiserListes(pCroise, l1->next, l2->next)
+			l3->val := l2->val
+			l3->next := croiserListes(pCroise, l1->next, l2->next)
 		Fsi
 	Sinon
-		croiserListes(pCroise, l1, l2) = NULL
+		croiserListes(pCroise, l1, l2) := NULL
+	Fsi
 		
 
 
@@ -60,7 +60,7 @@ Lexique:
 Algo :
 
 	qualiteIndiv(l) = - ((decodeList(l->listBits) / (2^(l->longIndiv))) * 2 + 1)^2	
-	// Aucune idée si on doit faire en sorte que A et B puissent changer ?
+	// Aucune idée si on doit faire en sorte que A et B puissent changer & si longIndiv paramètre d'Individu ?
 
 
 
