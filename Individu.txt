@@ -3,22 +3,68 @@ Données:
 Résultat: liste de bits générée aléatoirement
 Lexique:
 
+Algo :
+
 initIndiv_recursif() -> Individu
 Données:
 Résultat: liste de bits générée aléatoirement
 Lexique:
+
+Algo :
 
 decodeListe(l : Individu) -> entier
 Données: la liste de bits à décoder
 Résultat: l'entier correspondant à la liste de bits donnée
 Lexique:
 
-croiserListes(l1 : Individu, l2 : Individu) -> Individu
-Données:
-Résultat:
+Algo :
+
+	Si l est Vide, Alors
+		decodeList(l) := 0
+	Sinon   Si l->val = 0 Alors
+			decodeList(l) := decodeList(l->next)
+	        Sinon
+			decodeList(l) := 2^compteur(l) + decodeList(l->next)
+	        Fsi
+	Fsi
+				
+				
+
+croiserListes(pCroise : entier, l1 : Individu, l2 : Individu) -> Individu (ou plutôt void, on peut pas renvoyer 2 listes)
+Données: pCroise probabilité d'intervertir des éléments des 2 listes, l1 et l2 deux liste de bits
+Résultat: l1 et l2 les deux listes de bits dont certains éléments on été intervertis
 Lexique:
+	
+Algo :
+
+	Bit temp
+	Si l1 et l2 ne sont pas vides, Alors
+		Si nombre aléatoire entre 0 et pCroise = pCroise Alors
+			temp = l1->val
+			l1->val = l2->val
+			l2->val = temp
+			croiserListes(pCroise, l1, l2) = croiserListes(pCroise, l1->next, l2->next)
+		Sinon
+			croiserListes(pCroise, l1, l2) = croiserListes(pCroise, l1->next, l2->next)
+		Fsi
+	Sinon
+		croiserListes(pCroise, l1, l2) = NULL
+		
+
 
 qualiteIndiv(l : Individu) -> réel
 Données: la liste de bits Individu à calculer sa qualité
 Résultat: réel correspondant à la qualité de l'individu donné
 Lexique:
+
+Algo :
+
+	qualiteIndiv(l) = - ((decodeList(l->listBits) / (2^(l->longIndiv))) * 2 + 1)^2	
+	// Aucune idée si on doit faire en sorte que A et B puissent changer ?
+
+
+
+
+
+
+
