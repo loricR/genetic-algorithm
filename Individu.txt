@@ -5,12 +5,47 @@ Lexique:
 
 Algo :
 
+	int longIndiv := 8
+	List l := creer()
+	Tant que (longIndiv != 0) Faire
+		l = ajoutertq(l,rand()%2)
+		longIndiv := longIndiv - 1	
+	Fin Tant que
+
+OU en passant longIndiv en paramètres aussi (pas de grand changement mais +propre imo)
+	
+
+Possibilité 1 : 
 initIndiv_recursif() -> Individu
 Données:
 Résultat: liste de bits générée aléatoirement
 Lexique:
 
 Algo :
+
+	Si <cas d'arrêt not found yet> Alors
+		initIndiv_recursif() := creer()
+	Sinon
+		initIndiv_recursif() := ajoutertt(initIndiv_recursif(), rand()%2)
+	Fsi
+
+OU
+
+Possibilité 2 :
+initIndiv_recursif(longIndiv : entier) -> Individu
+Données: longIndiv, la longueur souhaitée de la liste de bits
+Résultat: liste de bits générée aléatoirement
+Lexique:
+
+Algo :
+
+	Si longIndiv == 0 Alors 
+		initIndiv_recursif(longIndiv) := creer()
+	Sinon
+		initIndiv_recursif(longIndiv) := ajoutertt(initIndiv_recursif(longIndiv-1), rand()%2)
+	Fsi
+
+	
 
 decodeListe(l : Individu) -> entier
 Données: la liste de bits à décoder
@@ -37,17 +72,14 @@ Lexique:
 	
 Algo :
 
-	List l3 := NULL;
 	Si l1 et l2 ne sont pas vides, Alors
 		Si réel aléatoire entre 0 et 1 <= pCroise Alors
-			l3->val := l1->val
-			l3->next := croiserListes(pCroise, l1->next, l2->next)
+			croiserListes(pCroise, l1, l2) = ajoutt(croiserListes(pCroise, l1->next, l2->next), l1->val)
 		Sinon
-			l3->val := l2->val
-			l3->next := croiserListes(pCroise, l1->next, l2->next)
+			croiserListes(pCroise, l1, l2) = ajoutt(croiserListes(pCroise, l1->next, l2->next), l2->val)
 		Fsi
 	Sinon
-		croiserListes(pCroise, l1, l2) := NULL
+		croiserListes(pCroise, l1, l2) := creer()
 	Fsi
 		
 

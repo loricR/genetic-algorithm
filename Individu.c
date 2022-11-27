@@ -4,11 +4,11 @@
 #include <time.h>
 #include <math.h>
 
-Individu initIndiv(){
+Individu initIndiv(int longIndiv){
 
 }
 
-Individu initIndiv_recursif(){
+Individu initIndiv_recursif(int longIndiv){
 
 }
 

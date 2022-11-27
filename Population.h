@@ -8,10 +8,10 @@ typedef Individu *Population;
 /**
  * @brief initialise une population composée d'individus aléatoires
  *
- * @param
+ * @param taillePop la taille souhaitée de la population en terme d'individus la composant
  * @return Population
  */
-Population initPop();
+Population initPop(int taillePop);
 
 /**
  * @brief trie en méthode Quicksort une Population par qualité de l'individu décroissante

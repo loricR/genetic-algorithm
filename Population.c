@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Population initPop() {
+Population initPop(int taillePop) {
 
 }
 

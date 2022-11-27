@@ -24,18 +24,18 @@ typedef struct
 /**
  * @brief Initialise de manière aléatoire la suite de bits caractérisant un individu
  *
- * @param
+ * @param longIndiv la longueur souhaitée de la liste de bits représentant l'individu
  * @return Individu
  */
-Individu initIndiv();
+Individu initIndiv(int longIndiv);
 
 /**
  * @brief Initialise récursivement de manière aléatoire la suite de bits caractérisant un individu
  *
- * @param
+ * @param longIndiv la longueur souhaitée de la liste de bits représentant l'individu
  * @return Individu
  */
-Individu initIndiv_recursif();
+Individu initIndiv_recursif(int longIndiv);
 
 /**
  * @brief calcule la valeur associée à la liste de bits d'un individu

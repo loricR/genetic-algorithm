@@ -1,12 +1,24 @@
-initPop() -> Population
-Données:
+initPop(taillePop : entier) -> Population
+Données: taillePop un entier représentant la taille voulue de la population (entre 20 et 200 selon l'énoncé)
 Résultat: Population (une liste d'Individus) générée aléatoirement
 Lexique:
+
+Algo :
+
+	Si taillePop == 0 Alors 
+		initPop(taillePop) := creer()
+	Sinon
+		initPop(taillePop) := ajoutertt(initPop(taillePop-1), initIndiv_recursif(8))
+	Fsi
+
 
 triQualiteDec(l : Population) -> Population
 Données: la Population à trier
 Résultat: Population triée par qualité décroissante des Individus
 Lexique:
+
+Algo :
+
 
 meilleursIndiv(l : Population, tSelect : entier) -> Population
 Données: la Population de base
@@ -14,7 +26,12 @@ Données: la Population de base
 Résultat: Population des meilleurs Individus en tronquant la liste et en la complétant par recopie des tSelect premiers éléments
 Lexique:
 
-croiserPop(l : Population) -> Population
+Algo :
+
+
+croiserPop(p : Population) -> Population
 Données: la Population qu'il faut croiser
 Résultat: Population constituée d'Individus sélectionnés aléatoirement deux à deux dans la Population de base et croisés entre eux
 Lexique:
+
+Algo :
