@@ -4,27 +4,38 @@
 #include <time.h>
 #include <math.h>
 
-int vide(Individu l) {
+int vide(Individu l)
+{
     return l == NULL;
 }
 
-Individu ajoutq(Individu l, int v) {
+Individu ajoutq(Individu l, Bit v)
+{
 
     Bits *i=l;
     Bits *temp;
 
     temp = (Bits*)malloc(sizeof(Bits));
-
-    while(i->next != NULL) {
-        i = i->next;
-    }
     temp->next = NULL;
-    i->next = temp;
     temp->val = v;
+
+    if(!vide(i))
+    {
+        while (i->next != NULL) {
+            i = i->next;
+        }
+
+        i->next = temp;
+    }
+    else
+    {
+        l = temp;
+    }
     return l;
 }
 
-Individu ajoutt(Individu l, Bit v) {
+Individu ajoutt(Individu l, Bit v)
+{
 
     Bits *temp;
     temp = (Bits*)malloc(sizeof(Bits));
@@ -34,20 +45,25 @@ Individu ajoutt(Individu l, Bit v) {
     return temp;
 }
 
-Individu initIndiv(int longIndiv){
-    srand(NULL);
+Individu initIndiv(int longIndiv)
+{
     Individu l = NULL;
-    while(longIndiv > 0) {
+    while(longIndiv > 0)
+    {
         l = ajoutq(l,rand()%2);
         longIndiv--;
     }
+    return l;
 }
 
-Individu initIndiv_recursif(int longIndiv){
-    srand(NULL);
-    if(longIndiv == 0) {
+Individu initIndiv_recursif(int longIndiv)
+{
+    if(longIndiv == 0)
+    {
         return NULL;
-    } else {
+    }
+    else
+    {
         return ajoutt(initIndiv_recursif(longIndiv-1),rand()%2);
     }
 }
@@ -60,22 +76,21 @@ int decodeList(Individu l)
     }
     else
     {
-        return (int) (l + 2 * decodeList(l->next));
+        return (l->val + 2 * decodeList(l->next));
     }
 }
 
 Individu croiserList(float pCroise, Individu l1, Individu l2)
 {
-    srand(NULL);
     if(!vide(l1) && !vide(l2))
     {
-        if((rand()%2) <= pCroise)
+        if((rand()%20) <= pCroise*10)   //TODO: voir si la proba est bonne
         {
-            return ajoutt(croiserList(pCroise, l1->next, l2->next), l1);
+            return ajoutt(croiserList(pCroise, l1->next, l2->next), l1->val);
         }
         else
         {
-            return ajoutt(croiserList(pCroise, l1->next, l2->next), l2);
+            return ajoutt(croiserList(pCroise, l1->next, l2->next), l2->val);
         }
     }
     else
@@ -84,10 +99,9 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
     }
 }
 
-float qualite(Individu i) {
-   // int valInd = decodeList(i.listBits);
-
-    return ((decodeList(i) / (2^(longIndiv(i)))) * 2 + 1)^2
+float qualiteIndiv(Individu i)
+{
+    return powf(((decodeList(i) / pow(2, longIndiv(i))) * 2 + 1), 2);
 }
 
 int longIndiv(Individu l)
@@ -98,4 +112,5 @@ int longIndiv(Individu l)
         l = l->next;
         compteur++;
     }
+    return compteur;
 }
