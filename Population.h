@@ -3,8 +3,16 @@
 #include "Individu.h"
 
 // Déclaration du type Population comme une liste chaînée d'individus
-typedef Individu *Population;
+typedef struct Individus
+{
+    Individu val;
+    struct Individus *next;
+} Individus;
 
+typedef Individus *Population;
+
+
+Population ajoutt_pop(Population l, Individu i);
 /**
  * @brief initialise une population composée d'individus aléatoires
  *
