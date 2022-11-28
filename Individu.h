@@ -21,6 +21,8 @@ typedef struct
     List listBits;
 } Individu ;
 
+int vide(Individu l);
+
 /**
  * @brief Initialise de manière aléatoire la suite de bits caractérisant un individu
  *
@@ -43,7 +45,7 @@ Individu initIndiv_recursif(int longIndiv);
  * @param l la liste de bits d'un individu
  * @return int
  */
-int decodeList(List l);
+int decodeList(Individu l);
 
 /**
  * @brief intervertit les valeurs de deux listes de bits en fonction d'une probabilité
@@ -52,7 +54,7 @@ int decodeList(List l);
  * @param pCroise la probabilité d'intervertissement, l1 et l2 les deux listes de bits à intervertir
  * @return Individu
  */
-Individu croiserList(float pCroise, List l1, List l2);
+Individu croiserList(float pCroise, Individu l1, Individu l2);
 
 /**
  * @brief calcule la qualité d'un individu en fonction de sa liste de bits

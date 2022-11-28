@@ -27,11 +27,22 @@ Résultat: Population des meilleurs Individus en tronquant la liste et en la com
 Lexique:
 
 Algo :
+    l = triQualiteDec(l)
+    i = l
+    TantQue tselect > 0 Faire
+        i = suc(i)
+        tselect = tselect - 1
+    FTantQue
+    TantQue non(vide(i)) Faire
+        val(i) = val(l)
+        i = suc(i)
+        l = suc(l)
+    FTantQue
 
-
-croiserPop(p : Population) -> Population
-Données: la Population qu'il faut croiser
+croiserPop(p : Population, t : entier) -> Population
+Données: la Population qu'il faut croiser, la taille de la population voulue
 Résultat: Population constituée d'Individus sélectionnés aléatoirement deux à deux dans la Population de base et croisés entre eux
 Lexique:
 
 Algo :
+
