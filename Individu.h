@@ -82,4 +82,6 @@ Individu croiserList(float pCroise, Individu l1, Individu l2);
  */
 float qualiteIndiv(Individu i);
 
+int longIndiv(Individu l);
+
 #endif
