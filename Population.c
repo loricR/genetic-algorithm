@@ -10,8 +10,21 @@ Population triQualiteDec(Population p) {
 
 }
 
-Population meilleursIndiv(Population p, int tSelect) {
-
+Population meilleursIndiv(Population p, int tSelect)
+{
+    p = triQualiteDec(p);
+    Population i = p;
+    while(!vide(i) && tSelect > 0)
+    {
+        i = i->next;
+        tSelect--;
+    }
+    while(!vide(i))
+    {
+        i->val = p->val;
+        i = i->next;
+        p = p->next;
+    }
 }
 
 Population croiserPop(Population p) {
