@@ -33,7 +33,7 @@ int vide(List l);
  * @param l la liste à tester, v la valeur à ajouter
  * @return List
  */
-List ajoutq(List l, int v) ;
+Individu ajoutq(Individu l, int v) ;
 
 int vide(Individu l);
 
@@ -44,7 +44,7 @@ int vide(Individu l);
  * @return Individu
  */
 
-List ajoutt(List l, int v);
+Individu ajoutt(Individu l, int v);
 
 
 Individu initIndiv(int longIndiv);
