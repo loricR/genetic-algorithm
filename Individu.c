@@ -4,11 +4,11 @@
 #include <time.h>
 #include <math.h>
 
-int vide(List l) {
+int vide(Individu l) {
     return l == NULL;
 }
 
-List ajoutq(List l, int v) {
+Individu ajoutq(Individu l, int v) {
 
     Bits *i=l;
     Bits *temp;
@@ -24,7 +24,7 @@ List ajoutq(List l, int v) {
     return l;
 }
 
-List ajoutt(List l, int v) {
+Individu ajoutt(Individu l, int v) {
 
     Bits *temp;
     temp = (Bits*)malloc(sizeof(Bits));
@@ -35,7 +35,8 @@ List ajoutt(List l, int v) {
 }
 
 Individu initIndiv(int longIndiv){
-    List l = NULL;
+    srand(NULL);
+    Individu l = NULL;
     while(longIndiv > 0) {
         l = ajoutq(l,rand()%2);
         longIndiv--;
@@ -43,6 +44,7 @@ Individu initIndiv(int longIndiv){
 }
 
 Individu initIndiv_recursif(int longIndiv){
+    srand(NULL);
     if(longIndiv == 0) {
         return NULL;
     } else {
