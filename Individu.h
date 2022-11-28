@@ -44,7 +44,7 @@ int vide(Individu l);
  * @return Individu
  */
 
-Individu ajoutt(Individu l, int v);
+Individu ajoutt(Individu l, Bit v);
 
 
 Individu initIndiv(int longIndiv);

@@ -24,7 +24,7 @@ Individu ajoutq(Individu l, int v) {
     return l;
 }
 
-Individu ajoutt(Individu l, int v) {
+Individu ajoutt(Individu l, Bit v) {
 
     Bits *temp;
     temp = (Bits*)malloc(sizeof(Bits));
@@ -87,7 +87,7 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
 float qualite(Individu i) {
    // int valInd = decodeList(i.listBits);
 
-    return ((decodeList(i.listBits) / (2^(longIndiv(i)))) * 2 + 1)^2
+    return ((decodeList(i) / (2^(longIndiv(i)))) * 2 + 1)^2
 }
 
 int longIndiv(Individu l)
