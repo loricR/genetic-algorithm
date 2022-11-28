@@ -24,7 +24,7 @@ typedef Bits *Individu;
  * @param l la liste à tester
  * @return int 0 ou 1
  */
-int vide(List l);
+int vide(Individu l);
 
 
 /**
