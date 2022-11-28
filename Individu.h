@@ -12,14 +12,28 @@ typedef struct Bits
 } Bits;
 
 // Liste chaînée de Bits
-typedef Bits *List;
+typedef Bits *Individu;
 
 // Individu
-typedef struct
-{
-    int longIndiv;
-    List listBits;
-} Individu ;
+
+
+
+/**
+ * @brief Détermine si une liste est vide
+ *
+ * @param l la liste à tester
+ * @return int 0 ou 1
+ */
+int vide(List l);
+
+
+/**
+ * @brief Ajoute un élément en tête de liste
+ *
+ * @param l la liste à tester, v la valeur à ajouter
+ * @return List
+ */
+List ajoutq(List l, int v) ;
 
 int vide(Individu l);
 
@@ -29,6 +43,10 @@ int vide(Individu l);
  * @param longIndiv la longueur souhaitée de la liste de bits représentant l'individu
  * @return Individu
  */
+
+List ajoutt(List l, int v);
+
+
 Individu initIndiv(int longIndiv);
 
 /**
