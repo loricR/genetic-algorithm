@@ -39,10 +39,21 @@ Algo :
         l = suc(l)
     FTantQue
 
-croiserPop(p : Population, t : entier) -> Population
-Données: la Population qu'il faut croiser, la taille de la population voulue
+croiserPop(p : Population, pCroise : réel) -> Population
+Données: la Population qu'il faut croiser, pCroise la probabilité de croisement pour un Individu
 Résultat: Population constituée d'Individus sélectionnés aléatoirement deux à deux dans la Population de base et croisés entre eux
-Lexique:
+Lexique: rand(0, longIndiv-1) donne un Individu aléatoire dans la taile de la Population, i != j
 
 Algo :
-
+    TantQue non(vide(p)) et longIndiv >= 2 Faire
+    	Si longIndiv = 2 Alors
+	    i = p
+	    j = suc(p)
+	Sinon
+	    i = rand(0, longIndiv-1)
+    	    j = rand(0, longIndiv-1)
+	FSi
+	res = insertq(res, croiserList(pCroise, i, j)
+	p = suppIndiv(p, i)
+	p = suppIndiv(p, j)
+    FTantQue
