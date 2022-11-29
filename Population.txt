@@ -44,6 +44,9 @@ Données: la Population qu'il faut croiser, pCroise la probabilité de croisemen
 Résultat: Population constituée d'Individus sélectionnés aléatoirement deux à deux dans la Population de base et croisés entre eux
 Lexique: rand(0, longIndiv-1) donne un Individu aléatoire dans la taile de la Population, i != j
 
+//On doit pouvoir croiser un nombre de fois défini par l'utilisateur
+//Donc la taille de la population résultat ne doit pas être définie par la taille de la population de base
+
 Algo :
     TantQue non(vide(p)) et longIndiv >= 2 Faire
     	Si longIndiv = 2 Alors
