@@ -26,7 +26,7 @@ Données: la Population de base
 Résultat: Population des meilleurs Individus en tronquant la liste et en la complétant par recopie des tSelect premiers éléments
 Lexique:
 
-Algo :
+Algo :				
     l = triQualiteDec(l)
     i = l
     TantQue tselect > 0 Faire
@@ -38,6 +38,26 @@ Algo :
         i = suc(i)
         l = suc(l)
     FTantQue
+
+Algo 2 :
+	
+	l = triQualiteDec(l)
+	i = creer()
+	TantQue tSelect > 0 Faire
+		i = ajouterq(i, val(l))
+		l = succ(l)
+	FTantQue
+	TantQue non(vide(l)) Faire
+		TantQue non(vide(i) et non(vide(l)) Faire
+        		val(l) = val(i)
+        		i = suc(i)
+        		l = suc(l)
+		TantQue
+		i = tete(i)
+   	 FTantQue
+	
+		
+		
 
 croiserPop(p : Population, pCroise : réel) -> Population
 Données: la Population qu'il faut croiser, pCroise la probabilité de croisement pour un Individu
