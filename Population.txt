@@ -48,14 +48,13 @@ Algo 2 :
 		l = succ(l)
 	FTantQue
 	TantQue non(vide(l)) Faire
-		TantQue non(vide(i) et non(vide(l)) Faire
+		TantQue non(vide(i)) et non(vide(l)) Faire
         		val(l) = val(i)
         		i = suc(i)
         		l = suc(l)
 		FTantQue
 		i = tete(i)
    	 FTantQue
-	
 		
 		
 
@@ -80,3 +79,29 @@ Algo :
 	p = suppIndiv(p, i)
 	p = suppIndiv(p, j)
     FTantQue
+
+Lexique : randIndiv(p) choisit un individu aléatoire dans la population p, compteur(p) mesure la taille de la population p
+
+Algo 2 :
+	i = NULL
+	j = NULL
+	p2 = NULL
+	TantQue compteur(p2) != compteur(p) Faire
+		Faire 
+			i = randIndiv(p)
+			j = randIndiv(p)		
+		TantQue i == j 			
+		FinFaireTantQue
+
+		p2 = insertq(p2, croiserList(pCroise, i, j)
+	FTantQue
+
+
+
+
+
+
+
+
+
+
