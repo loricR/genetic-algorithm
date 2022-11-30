@@ -52,7 +52,7 @@ Algo 2 :
         		val(l) = val(i)
         		i = suc(i)
         		l = suc(l)
-		TantQue
+		FTantQue
 		i = tete(i)
    	 FTantQue
 	
