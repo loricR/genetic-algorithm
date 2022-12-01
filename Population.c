@@ -42,5 +42,32 @@ Population meilleursIndiv(Population p, int tSelect)
 }
 
 Population croiserPop(Population p) {
+    Population p2 = NULL;
+    Individu i,j;
+    i = NULL;
+    j = NULL;
 
+    while (taillePop(p2) != taillePop(p)) {
+        do {
+            i = randIndiv(p);
+            j = randIndiv(p);
+        } while (i == j);
+        p2 = ajoutt_pop(p2, croiserList(0.5,i,j));
+    }
+    return p2;
+}
+
+int taillePop(Population p) {
+    if (p != NULL) {
+        return taillePop(p->next) + 1;
+    } else return 0;
+}
+
+Individu randIndiv(Population p) {
+    int a = rand()%taillePop(p);
+    while(a > 0) {
+        a--;
+        p = p->next;
+    }
+    return p->val;
 }

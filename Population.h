@@ -46,4 +46,23 @@ Population meilleursIndiv(Population p, int tSelect);
  */
 Population croiserPop(Population p);
 
+
+/**
+ * @brief retourne la taille d'une population
+ *
+ * @param p la population initiale
+ * @return int
+ */
+int taillePop(Population p);
+
+
+/**
+ * @brief retourne un individu aléatoire dans une population
+ *
+ * @param p la population initiale
+ * @return Individu
+ */
+Individu randIndiv(Population p);
+
+
 #endif

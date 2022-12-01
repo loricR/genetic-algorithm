@@ -39,5 +39,16 @@ int main() {
 
     //-----------------------------------------------------------------------------
 
+    //-------------------TEST POPULATION---------------------------------------------
+
+    Population p, p2;
+    p = initPop(20);
+
+    //TODO Faire fonctions dédiées pour afficher un individu, et une population pour pouvoir
+    //TODO tester les fonctions sur population
+
+
+    //------------------------------------------------------------------------------
+
     return 0;
 }
