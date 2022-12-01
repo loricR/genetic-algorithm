@@ -39,6 +39,7 @@ Algo :
         l = suc(l)
     FTantQue
 
+
 Algo 2 :
 	
 	l = triQualiteDec(l)
