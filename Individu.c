@@ -12,22 +12,22 @@ int vide(Individu l)
 Individu ajoutq(Individu l, Bit v)
 {
 
-    Bits *i=l;
+    Bits *i = l;
     Bits *temp;
 
-    temp = (Bits*)malloc(sizeof(Bits));
+    temp = (Bits *) malloc(sizeof(Bits));
     temp->next = NULL;
     temp->val = v;
 
-    if(!vide(i))
+    if (!vide(i))
     {
-        while (i->next != NULL) {
+        while (i->next != NULL)
+        {
             i = i->next;
         }
 
         i->next = temp;
-    }
-    else
+    } else
     {
         l = temp;
     }
@@ -38,9 +38,9 @@ Individu ajoutt(Individu l, Bit v)
 {
 
     Bits *temp;
-    temp = (Bits*)malloc(sizeof(Bits));
+    temp = (Bits *) malloc(sizeof(Bits));
     temp->val = v;
-    temp->next=l;
+    temp->next = l;
 
     return temp;
 }
@@ -48,9 +48,9 @@ Individu ajoutt(Individu l, Bit v)
 Individu initIndiv(int longIndiv)
 {
     Individu l = NULL;
-    while(longIndiv > 0)
+    while (longIndiv > 0)
     {
-        l = ajoutq(l,rand()%2);
+        l = ajoutq(l, rand() % 2);
         longIndiv--;
     }
     return l;
@@ -58,23 +58,21 @@ Individu initIndiv(int longIndiv)
 
 Individu initIndiv_recursif(int longIndiv)
 {
-    if(longIndiv == 0)
+    if (longIndiv == 0)
     {
         return NULL;
-    }
-    else
+    } else
     {
-        return ajoutt(initIndiv_recursif(longIndiv-1),rand()%2);
+        return ajoutt(initIndiv_recursif(longIndiv - 1), rand() % 2);
     }
 }
 
 int decodeList(Individu l)
 {
-    if(vide(l))
+    if (vide(l))
     {
         return 0;
-    }
-    else
+    } else
     {
         return (l->val + 2 * decodeList(l->next));
     }
@@ -82,18 +80,16 @@ int decodeList(Individu l)
 
 Individu croiserList(float pCroise, Individu l1, Individu l2)
 {
-    if(!vide(l1) && !vide(l2))
+    if (!vide(l1) && !vide(l2))
     {
-        if((rand()%20) <= pCroise*10)   //TODO: voir si la proba est bonne
+        if ((rand() % 20) <= pCroise * 10)   //TODO: voir si la proba est bonne
         {
             return ajoutt(croiserList(pCroise, l1->next, l2->next), l1->val);
-        }
-        else
+        } else
         {
             return ajoutt(croiserList(pCroise, l1->next, l2->next), l2->val);
         }
-    }
-    else
+    } else
     {
         return NULL;
     }
@@ -107,7 +103,7 @@ float qualiteIndiv(Individu i)
 int longIndiv(Individu l)
 {
     int compteur = 0;
-    while(!vide(l))
+    while (!vide(l))
     {
         l = l->next;
         compteur++;

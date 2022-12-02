@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main() {
+int main()
+{
     //-------------------TEST INDIVIDU---------------------------------------------
     Individu i, j;
     srand(time(NULL));
@@ -12,14 +13,16 @@ int main() {
 
     i = initIndiv(8);
     j = initIndiv_recursif(8);
-    Individu x=i;
-    Individu y=j;
-    while (x != NULL) {
+    Individu x = i;
+    Individu y = j;
+    while (x != NULL)
+    {
         printf("%d ", x->val);
         x = x->next;
     }
     printf("\n");
-    while (y != NULL) {
+    while (y != NULL)
+    {
         printf("%d ", y->val);
         y = y->next;
     }
@@ -29,7 +32,8 @@ int main() {
 
     Individu croisement = croiserList(0.5, i, j);
     Individu crois = croisement;
-    while (crois != NULL) {
+    while (crois != NULL)
+    {
         printf("%d ", crois->val);
         crois = crois->next;
     }
