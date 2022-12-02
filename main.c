@@ -28,17 +28,19 @@ int main() {
     }
     printf("\n");
 
-    printf("qualite : %f", qualiteIndiv(croisement));
+    printf("qualite : %f\n", qualiteIndiv(croisement));
 
     //-----------------------------------------------------------------------------
 
     //-------------------TEST POPULATION-------------------------------------------
 
     Population p, p2;
-    p = initPop(20);
-
-    //TODO Faire fonctions dédiées pour afficher un individu, et une population pour pouvoir
-    //TODO tester les fonctions sur population
+    p = initPop(5);
+    p2 = initPop(5);
+    afficherPop(p);
+    printf("\n p fille :\n");
+    p2 = croiserPop(p);
+    afficherPop(p2);
 
 
     //------------------------------------------------------------------------------
