@@ -12,22 +12,26 @@ void afficherPop(Population p) {
 Population ajoutt_pop(Population l, Individu i) {
 
     Individus *temp;
-    temp = (Individus*)malloc(sizeof(Individus));
+    temp = (Individus *) malloc(sizeof(Individus));
     temp->val = i;
-    temp->next=l;
+    temp->next = l;
 
     return temp;
 }
 
-Population initPop(int taillePop) {
-    if(taillePop == 0) {
+Population initPop(int taillePop)
+{
+    if (taillePop == 0)
+    {
         return NULL;
-    } else {
-        return ajoutt_pop(initPop(taillePop-1),initIndiv_recursif(8));
+    } else
+    {
+        return ajoutt_pop(initPop(taillePop - 1), initIndiv_recursif(8));
     }
 }
 
-Population triQualiteDec(Population p) {
+Population triQualiteDec(Population p)
+{
 
 }
 
@@ -35,12 +39,12 @@ Population meilleursIndiv(Population p, int tSelect)
 {
     p = triQualiteDec(p);
     Population i = p;
-    while(!vide(i) && tSelect > 0)
+    while (!vide(i) && tSelect > 0)
     {
         i = i->next;
         tSelect--;
     }
-    while(!vide(i))
+    while (!vide(i))
     {
         i->val = p->val;
         i = i->next;
@@ -48,31 +52,38 @@ Population meilleursIndiv(Population p, int tSelect)
     }
 }
 
-Population croiserPop(Population p) {
+Population croiserPop(Population p)
+{
     Population p2 = NULL;
-    Individu i,j;
+    Individu i, j;
     i = NULL;
     j = NULL;
 
-    while (taillePop(p2) != taillePop(p)) {
-        do {
+    while (taillePop(p2) != taillePop(p))
+    {
+        do
+        {
             i = randIndiv(p);
             j = randIndiv(p);
         } while (i == j);
-        p2 = ajoutt_pop(p2, croiserList(0.5,i,j));
+        p2 = ajoutt_pop(p2, croiserList(0.5, i, j));
     }
     return p2;
 }
 
-int taillePop(Population p) {
-    if (p != NULL) {
+int taillePop(Population p)
+{
+    if (p != NULL)
+    {
         return taillePop(p->next) + 1;
     } else return 0;
 }
 
-Individu randIndiv(Population p) {
-    int a = rand()%taillePop(p);
-    while(a > 0) {
+Individu randIndiv(Population p)
+{
+    int a = rand() % taillePop(p);
+    while (a > 0)
+    {
         a--;
         p = p->next;
     }
