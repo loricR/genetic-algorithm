@@ -11,10 +11,10 @@ typedef struct Bits
     struct Bits *next;
 } Bits;
 
-// Liste chaînée de Bits
+// Liste chaînée de Bits Individu
 typedef Bits *Individu;
 
-// Individu
+
 
 
 
@@ -26,16 +26,31 @@ typedef Bits *Individu;
  */
 int vide(Individu l);
 
+/**
+ * @brief Afficher la liste de bits composant un Individu
+ *
+ * @param l l'Individu à afficher'
+ * @return
+ */
+void afficherInd(Individu l);
 
 /**
  * @brief Ajoute un élément en tête de liste
  *
- * @param l la liste à tester, v la valeur à ajouter
+ * @param l la liste à laquelle ajouter un Bit
+ * @param v la valeur à ajouter
  * @return List
  */
 Individu ajoutq(Individu l, Bit v) ;
 
-int vide(Individu l);
+/**
+ * @brief Ajoute un élément en queue de liste
+ *
+ * @param l la liste à laquelle ajouter un Bit
+ * @param v la valeur à ajouter
+ * @return List
+ */
+Individu ajoutt(Individu l, Bit v);
 
 /**
  * @brief Initialise de manière aléatoire la suite de bits caractérisant un individu
@@ -43,10 +58,6 @@ int vide(Individu l);
  * @param longIndiv la longueur souhaitée de la liste de bits représentant l'individu
  * @return Individu
  */
-
-Individu ajoutt(Individu l, Bit v);
-
-
 Individu initIndiv(int longIndiv);
 
 /**
@@ -69,7 +80,8 @@ int decodeList(Individu l);
  * @brief intervertit les valeurs de deux listes de bits en fonction d'une probabilité
  * pour renvoyer une nouvelle liste de bits
  *
- * @param pCroise la probabilité d'intervertissement, l1 et l2 les deux listes de bits à intervertir
+ * @param pCroise la probabilité d'intervertissement
+ * @param l1,l2 les deux listes de bits à intervertir
  * @return Individu
  */
 Individu croiserList(float pCroise, Individu l1, Individu l2);
@@ -82,6 +94,12 @@ Individu croiserList(float pCroise, Individu l1, Individu l2);
  */
 float qualiteIndiv(Individu i);
 
+/**
+ * @brief renvoie la taille de la liste de Bits composant un Individu
+ *
+ * @param i l'individu à tester
+ * @return int
+ */
 int longIndiv(Individu l);
 
 #endif

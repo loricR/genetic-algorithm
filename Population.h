@@ -12,7 +12,23 @@ typedef struct Individus
 typedef Individus *Population;
 
 
+/**
+ * @brief afficher l'ensemble des individus présents dans une Population
+ *
+ * @param p la Population à afficher
+ * @return
+ */
+void afficherPop(Population p);
+
+/**
+ * @brief ajoute un Individu en tête d'une Population
+ *
+ * @param i l'Individu à afficher
+ * @param p la Population à laquelle on veut ajouter un Individu
+ * @return Population
+ */
 Population ajoutt_pop(Population l, Individu i);
+
 /**
  * @brief initialise une population composée d'individus aléatoires
  *
@@ -32,7 +48,8 @@ Population triQualiteDec(Population p);
 /**
  * @brief Sélectionne les meilleurs individus d'une population et les répertorie dans une population réduite
  *
- * @param p la population initiale, et tSelect le taux de sélection voulu
+ * @param p la population initiale
+ * @param tSelect le taux de sélection voulu
  * @return Population
  */
 Population meilleursIndiv(Population p, int tSelect);

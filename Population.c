@@ -2,8 +2,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Population ajoutt_pop(Population l, Individu i)
-{
+void afficherPop(Population p) {
+    while(p != NULL) {
+        afficherInd(p->val);
+        p = p->next;
+    }
+}
+
+Population ajoutt_pop(Population l, Individu i) {
 
     Individus *temp;
     temp = (Individus *) malloc(sizeof(Individus));
