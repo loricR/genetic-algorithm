@@ -47,6 +47,7 @@ Algo 2 :
 	TantQue tSelect > 0 Faire
 		i = ajouterq(i, val(l))
 		l = succ(l)
+		tSelect = tSelect-1
 	FTantQue
 	TantQue non(vide(l)) Faire
 		TantQue non(vide(i)) et non(vide(l)) Faire
