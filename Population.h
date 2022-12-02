@@ -11,6 +11,8 @@ typedef struct Individus
 
 typedef Individus *Population;
 
+int vide_pop(Population p);
+
 
 /**
  * @brief afficher l'ensemble des individus présents dans une Population
@@ -44,6 +46,10 @@ Population initPop(int taillePop);
  * @return Population
  */
 Population triQualiteDec(Population p);
+
+Population partition(Population p);
+
+void echangeIndiv(Population a, Population b);
 
 /**
  * @brief Sélectionne les meilleurs individus d'une population et les répertorie dans une population réduite

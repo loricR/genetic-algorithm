@@ -37,8 +37,8 @@ int main()
 
     //-------------------TEST POPULATION-------------------------------------------
 
-    Population p, p2;
-    p = initPop(20);
+    //Population p, p2;
+    //p = initPop(20);
 
     //TODO Faire fonctions dédiées pour afficher un individu, et une population pour pouvoir
     //TODO tester les fonctions sur population
@@ -46,5 +46,18 @@ int main()
 
     //------------------------------------------------------------------------------
 
+    Population p;
+    p = initPop(6);
+    printf("\n");
+    afficherPop(p);
+    printf("-------\n");
+    Population dernier = p;
+    while(!vide_pop(dernier->next))
+    {
+        dernier = dernier->next;
+    }
+    Population premier = p;
+    echangeIndiv(premier, dernier);
+    afficherPop(p);
     return 0;
 }

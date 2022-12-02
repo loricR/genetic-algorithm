@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int vide_pop(Population p)
+{
+    return p == NULL;
+}
+
 void afficherPop(Population p) {
     while(p != NULL) {
         afficherInd(p->val);
@@ -24,7 +29,8 @@ Population initPop(int taillePop)
     if (taillePop == 0)
     {
         return NULL;
-    } else
+    }
+    else
     {
         return ajoutt_pop(initPop(taillePop - 1), initIndiv_recursif(8));
     }
@@ -32,7 +38,46 @@ Population initPop(int taillePop)
 
 Population triQualiteDec(Population p)
 {
+    Population premier = p;
+    Population dernier = p;
+    while(!vide_pop(dernier->next))
+    {
+        dernier = dernier->next;
+    }
 
+    if(premier < dernier)
+}
+
+Population partition(Population p)
+{
+    Population dernier = p;
+    while(!vide_pop(dernier->next))
+    {
+        dernier = dernier->next;
+    }
+    Population pivot = dernier; // pivot
+    Population i = p; // Index of smaller element and indicates
+    // the right position of pivot found so far
+
+    Population j = p;
+    while(!vide_pop(j)) {
+        // If current element is smaller than the pivot
+        if (qualiteIndiv(j->val) < qualiteIndiv(pivot->val)) {
+            i = i->next; // increment index of smaller element
+            echangeIndiv(i, j);
+        }
+        j = j->next;
+    }
+    echangeIndiv(i->next, dernier);
+    return i->next;
+}
+
+void echangeIndiv(Population a, Population b)
+{
+    Individu temp;
+    temp = a->val;
+    a->val = b->val;
+    b->val = temp;
 }
 
 Population meilleursIndiv(Population p, int tSelect)
