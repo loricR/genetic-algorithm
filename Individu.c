@@ -9,6 +9,16 @@ int vide(Individu l)
     return l == NULL;
 }
 
+void afficherInd(Individu l) {
+    if(!vide(l)) {
+        while(l != NULL) {
+            printf("%d ",l->val);
+            l = l->next;
+        }
+    }
+    printf("\n");
+}
+
 Individu ajoutq(Individu l, Bit v)
 {
 

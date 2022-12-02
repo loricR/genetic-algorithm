@@ -12,6 +12,8 @@ typedef struct Individus
 typedef Individus *Population;
 
 
+void afficherPop(Population p);
+
 Population ajoutt_pop(Population l, Individu i);
 /**
  * @brief initialise une population composée d'individus aléatoires

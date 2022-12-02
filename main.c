@@ -14,16 +14,9 @@ int main() {
     j = initIndiv_recursif(8);
     Individu x=i;
     Individu y=j;
-    while (x != NULL) {
-        printf("%d ", x->val);
-        x = x->next;
-    }
-    printf("\n");
-    while (y != NULL) {
-        printf("%d ", y->val);
-        y = y->next;
-    }
-    printf("\n");
+
+    afficherInd(x);
+    afficherInd(y);
 
     printf("i : %d\nj : %d\n", decodeList(i), decodeList(j));
 
@@ -39,7 +32,7 @@ int main() {
 
     //-----------------------------------------------------------------------------
 
-    //-------------------TEST POPULATION---------------------------------------------
+    //-------------------TEST POPULATION-------------------------------------------
 
     Population p, p2;
     p = initPop(20);

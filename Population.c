@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void afficherPop(Population p) {
+    while(p != NULL) {
+        afficherInd(p->val);
+        p = p->next;
+    }
+}
+
 Population ajoutt_pop(Population l, Individu i) {
 
     Individus *temp;

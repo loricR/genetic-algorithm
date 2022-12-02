@@ -27,6 +27,9 @@ typedef Bits *Individu;
 int vide(Individu l);
 
 
+void afficherInd(Individu l);
+
+
 /**
  * @brief Ajoute un élément en tête de liste
  *
