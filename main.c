@@ -48,5 +48,12 @@ int main()
 
     //------------------------------------------------------------------------------
 
+    Population p;
+    p = initPop(6);
+    printf("\n");
+    afficherPop(p);
+    printf("-------\n");
+    triQualiteDec(p, dernierIndiv(p));
+    afficherPop(p);
     return 0;
 }

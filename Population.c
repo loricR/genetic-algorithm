@@ -2,11 +2,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int vide_pop(Population p)
+{
+    return p == NULL;
+}
+
 void afficherPop(Population p) {
     // Tant qu'on est pas arrivés au bout de la population
     while(p != NULL) {
         // On affiche l'individu et on passe au suivant
         afficherInd(p->val);
+        printf("%f\n", qualiteIndiv(p->val));
         p = p->next;
     }
 }
@@ -62,14 +68,65 @@ Population initPop(int taillePop)
     }
 }
 
-Population triQualiteDec(Population p)
+void triQualiteDec(Population premier, Population dernier)
 {
+    if(premier != dernier)
+    {
+        Population pivot = partition(premier, dernier);
 
+        if(pivot != NULL && pivot->next != NULL)
+        {
+            triQualiteDec(pivot->next, dernier);
+        }
+        if(pivot != NULL && premier != pivot)
+        {
+            triQualiteDec(premier, pivot);
+        }
+    }
+}
+
+Population partition(Population premier, Population dernier)
+{
+    Population pivot = premier;
+    Population actuel = premier;
+    Individu temp;
+
+    while(actuel != NULL && actuel != dernier)
+    {
+        if(qualiteIndiv(actuel->val) > qualiteIndiv(dernier->val))
+        {
+            pivot = premier;
+
+            //échange individus
+            temp = premier->val;
+            premier->val = actuel->val;
+            actuel->val = temp;
+
+            premier = premier->next;
+        }
+        actuel = actuel->next;
+    }
+    //échange la dernière valeur avec la valeur actuelle
+    temp = premier->val;
+    premier->val = dernier->val;
+    dernier->val = temp;
+
+    return pivot;
+}
+
+Population dernierIndiv(Population p)
+{
+    Population dernier = p;
+    while(!vide_pop(dernier->next))
+    {
+        dernier = dernier->next;
+    }
+    return dernier;
 }
 
 Population meilleursIndiv(Population p, int tSelect)
 {
-   /* p = triQualiteDec(p);
+    triQualiteDec(p, dernierIndiv(p));
     Population i = p;
     while (!vide(i) && tSelect > 0)
     {
