@@ -3,7 +3,9 @@
 #include <stdio.h>
 
 void afficherPop(Population p) {
+    // Tant qu'on est pas arrivés au bout de la population
     while(p != NULL) {
+        // On affiche l'individu et on passe au suivant
         afficherInd(p->val);
         p = p->next;
     }
@@ -11,6 +13,7 @@ void afficherPop(Population p) {
 
 Population ajoutt_pop(Population l, Individu i) {
 
+    // Même principe que ajoutt dans Individu.c
     Individus *temp;
     temp = (Individus *) malloc(sizeof(Individus));
     temp->val = i;
@@ -22,7 +25,7 @@ Population ajoutt_pop(Population l, Individu i) {
 
 Population ajoutq_pop(Population p, Individu i)
 {
-
+    // Même principe que ajoutq dans Individu.c
     Individus *j=p;
     Individus *temp;
 
@@ -47,11 +50,13 @@ Population ajoutq_pop(Population p, Individu i)
 
 Population initPop(int taillePop)
 {
+    // Cas d'arrêt : lorsque la taille de la population voulue est atteinte
     if (taillePop == 0)
     {
-
         return NULL;
-    } else
+    }
+    // Cas général : On ajoute un individu de taille 8 à la population de taille voulue - 1
+    else
     {
         return ajoutt_pop(initPop(taillePop - 1), initIndiv_recursif(8));
     }
@@ -116,13 +121,17 @@ Population croiserPop(Population p)
     i = NULL;
     j = NULL;
 
+    // Tant que la Population fille n'est pas de même taille que la Population mère
     while (taillePop(p2) != taillePop(p))
     {
+        // Prendre deux individus dans la population mère et recommencer
+        // si on tombe deux fois sur le même individu
         do
         {
             i = randIndiv(p);
             j = randIndiv(p);
         } while (i == j);
+        // On ajoute à la Population fille le croisement des deux individus
         p2 = ajoutt_pop(p2, croiserList(0.5, i, j));
     }
     return p2;
@@ -130,6 +139,7 @@ Population croiserPop(Population p)
 
 int taillePop(Population p)
 {
+    // Si la Population n'est pas vide (cas général)
     if (p != NULL)
     {
         return taillePop(p->next) + 1;
@@ -138,8 +148,10 @@ int taillePop(Population p)
 
 
 Individu randIndiv(Population p) {
+    // On prend un nombre compris dans la taille de la Population
     int a = rand()%taillePop(p);
     printf("%d ",a);
+    // On parcourt la Population jusqu'à trouver le a-ième individu
     while(a > 0) {
 
         a--;
