@@ -25,11 +25,20 @@ void afficherPop(Population p);
 /**
  * @brief ajoute un Individu en tête d'une Population
  *
- * @param i l'Individu à afficher
+ * @param i l'Individu que l'on souhaite ajouter
  * @param p la Population à laquelle on veut ajouter un Individu
  * @return Population
  */
 Population ajoutt_pop(Population l, Individu i);
+
+/**
+ * @brief ajoute un Individu en queue d'une Population
+ *
+ * @param i l'Individu que l'on souhaite ajouter
+ * @param p la Population à laquelle on veut ajouter un Individu
+ * @return Population
+ */
+Population ajoutq_pop(Population p, Individu i);
 
 /**
  * @brief initialise une population composée d'individus aléatoires
