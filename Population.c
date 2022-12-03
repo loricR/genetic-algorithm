@@ -10,6 +10,7 @@ int vide_pop(Population p)
 void afficherPop(Population p) {
     while(p != NULL) {
         afficherInd(p->val);
+        printf("%f\n", qualiteIndiv(p->val));
         p = p->next;
     }
 }
@@ -36,53 +37,65 @@ Population initPop(int taillePop)
     }
 }
 
-Population triQualiteDec(Population p)
+void triQualiteDec(Population premier, Population dernier)
 {
-    Population premier = p;
-    Population dernier = p;
-    while(!vide_pop(dernier->next))
+    if(premier != dernier)
     {
-        dernier = dernier->next;
-    }
+        Population pivot = partition(premier, dernier);
 
-    if(premier < dernier)
-}
-
-Population partition(Population p)
-{
-    Population dernier = p;
-    while(!vide_pop(dernier->next))
-    {
-        dernier = dernier->next;
-    }
-    Population pivot = dernier; // pivot
-    Population i = p; // Index of smaller element and indicates
-    // the right position of pivot found so far
-
-    Population j = p;
-    while(!vide_pop(j)) {
-        // If current element is smaller than the pivot
-        if (qualiteIndiv(j->val) < qualiteIndiv(pivot->val)) {
-            i = i->next; // increment index of smaller element
-            echangeIndiv(i, j);
+        if(pivot != NULL && pivot->next != NULL)
+        {
+            triQualiteDec(pivot->next, dernier);
         }
-        j = j->next;
+        if(pivot != NULL && premier != pivot)
+        {
+            triQualiteDec(premier, pivot);
+        }
     }
-    echangeIndiv(i->next, dernier);
-    return i->next;
 }
 
-void echangeIndiv(Population a, Population b)
+Population partition(Population premier, Population dernier)
 {
+    Population pivot = premier;
+    Population actuel = premier;
     Individu temp;
-    temp = a->val;
-    a->val = b->val;
-    b->val = temp;
+
+    while(actuel != NULL && actuel != dernier)
+    {
+        if(qualiteIndiv(actuel->val) > qualiteIndiv(dernier->val))
+        {
+            pivot = premier;
+
+            //échange individus
+            temp = premier->val;
+            premier->val = actuel->val;
+            actuel->val = temp;
+
+            premier = premier->next;
+        }
+        actuel = actuel->next;
+    }
+    //échange la dernière valeur avec la valeur actuelle
+    temp = premier->val;
+    premier->val = dernier->val;
+    dernier->val = temp;
+
+    return pivot;
+}
+
+Population dernierIndiv(Population p)
+{
+    Population dernier = p;
+    while(!vide_pop(dernier->next))
+    {
+        dernier = dernier->next;
+    }
+    return dernier;
 }
 
 Population meilleursIndiv(Population p, int tSelect)
 {
-    p = triQualiteDec(p);
+    triQualiteDec(p, dernierIndiv(p));
     Population i = p;
     while (!vide(i) && tSelect > 0)
     {

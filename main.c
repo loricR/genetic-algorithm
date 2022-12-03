@@ -51,13 +51,7 @@ int main()
     printf("\n");
     afficherPop(p);
     printf("-------\n");
-    Population dernier = p;
-    while(!vide_pop(dernier->next))
-    {
-        dernier = dernier->next;
-    }
-    Population premier = p;
-    echangeIndiv(premier, dernier);
+    triQualiteDec(p, dernierIndiv(p));
     afficherPop(p);
     return 0;
 }
