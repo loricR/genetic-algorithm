@@ -64,7 +64,7 @@ Population initPop(int taillePop)
     // Cas général : On ajoute un individu de taille 8 à la population de taille voulue - 1
     else
     {
-        return ajoutt_pop(initPop(taillePop - 1), initIndiv_recursif(8));
+        return ajoutt_pop(initPop(taillePop - 1), initIndiv_recursif(LONG_INDIV));
     }
 }
 
@@ -143,7 +143,7 @@ Population meilleursIndiv(Population p, int tSelect)
    Population p2 = NULL;
    Population p_mem, p_ret;
    Population temp = p;
-   triQualiteDec(p, dernierIndiv(p));
+   //triQualiteDec(p, dernierIndiv(p));
 
    // On enregistre les tSelect premiers éléments de p dans p2
    while(tSelect > 0) {
@@ -208,7 +208,6 @@ int taillePop(Population p)
 Individu randIndiv(Population p) {
     // On prend un nombre compris dans la taille de la Population
     int a = rand()%taillePop(p);
-    printf("%d ",a);
     // On parcourt la Population jusqu'à trouver le a-ième individu
     while(a > 0) {
 
