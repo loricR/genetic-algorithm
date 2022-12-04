@@ -126,28 +126,29 @@ Population dernierIndiv(Population p)
 
 Population meilleursIndiv(Population p, int tSelect)
 {
-    triQualiteDec(p, dernierIndiv(p));
-    Population i = p;
-    while (!vide(i) && tSelect > 0)
-    {
-        i = i->next;
-        tSelect--;
-    }
-    while (!vide(i))
-    {
-        i->val = p->val;
-        i = i->next;
-        p = p->next;
-    }
-   */
+//    triQualiteDec(p, dernierIndiv(p));
+//    Population i = p;
+//    while (!vide(i) && tSelect > 0)
+//    {
+//        i = i->next;
+//        tSelect--;
+//    }
+//    while (!vide(i))
+//    {
+//        i->val = p->val;
+//        i = i->next;
+//        p = p->next;
+//    }
+
    Population p2 = NULL;
    Population p_mem, p_ret;
-   p = triQualiteDec(p);
+   Population temp = p;
+   triQualiteDec(p, dernierIndiv(p));
 
    // On enregistre les tSelect premiers éléments de p dans p2
    while(tSelect > 0) {
-       p2 = ajoutq_pop(p2, p->val);
-       p = p->next;
+       p2 = ajoutq_pop(p2, temp->val);
+       temp = temp->next;
        tSelect--;
    }
 
