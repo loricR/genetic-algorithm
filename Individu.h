@@ -1,7 +1,7 @@
 #ifndef INDIVIDU_H
 #define INDIVIDU_H
 
-#define LONG_INDIV 8    //Le nombre d'individus voulus quand on créé une population
+#define LONG_INDIV 16   //La longueur d'individu voulue quand on créé une population
 
 // Bit valeur 0 ou 1
 typedef unsigned char Bit;
