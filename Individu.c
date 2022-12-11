@@ -108,7 +108,7 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
     if (!vide(l1) && !vide(l2))
     {
         // Une chance sur 2 d'ajouter en tête de la liste résultat soit la valeur de l1, soit celle de l2
-        if ((rand() % 20) <= pCroise * 10)   //TODO: voir si la proba est bonne
+        if ((rand() % 100) < pCroise * 100)
         {
             return ajoutt(croiserList(pCroise, l1->next, l2->next), l1->val);
         } else
@@ -124,9 +124,9 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
 
 float qualiteIndiv(Individu i)
 {
-    return powf(((decodeList(i) / pow(2, longIndiv(i))) * 2 + 1), 2);
+    // return powf(((decodeList(i) / pow(2, longIndiv(i))) * 2 + 1), 2);
     // Pour la manipulation :
-    // return -log10f(((decodeList(i) / pow(2, longIndiv(i))) * 4.9 + 0.1));
+    return -log10f(((decodeList(i) / pow(2, longIndiv(i))) * 4.9 + 0.1));
 }
 
 int longIndiv(Individu l)
@@ -138,7 +138,7 @@ int longIndiv(Individu l)
         compteur++;
     }
     return compteur;*/
-    
+
     if (l != NULL)
     {
         return longIndiv(l->next) + 1;

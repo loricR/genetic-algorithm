@@ -51,9 +51,11 @@ int main()
 //    afficherPop(meilleursIndiv(p2, 3));
 
     srand(time(NULL));
-    int taillePop = (rand() % (200 - 20 + 1)) + 1;
-    int nGen = (rand() % (200 - 20 + 1)) + 1;
-    int tSelect = 5;
+    int taillePop = (rand() % 181) + 20;
+    int nGen = (rand() % 181) + 20;
+    int tS = (rand() % 91) + 10;
+    int tSelect = (float)(tS)/100 *  taillePop;
+
     Population p = initPop(taillePop);
 
     for(int i=0; i<nGen; i++)
@@ -67,7 +69,7 @@ int main()
     printf("\n---------\n");
     afficherInd(p->val);    //affichage de l'individu avec la meilleure qualité
     printf("qualite : %f\n", qualiteIndiv(p->val));
-    printf("nGen : %d / taillePop : %d",nGen,taillePop);
+    printf("nGen : %d / taillePop : %d / tSelect : %d",nGen,taillePop, tSelect);
 
     return 0;
 }
