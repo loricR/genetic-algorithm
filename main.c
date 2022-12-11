@@ -53,7 +53,7 @@ int main()
     srand(time(NULL));
     int taillePop = (rand() % 181) + 20;
     int nGen = (rand() % 181) + 20;
-    int tS = (rand() % 91) + 10;
+    int tS = (rand() % 81) + 10;
     int tSelect = (float)(tS)/100 *  taillePop;
 
     Population p = initPop(taillePop);
