@@ -1,7 +1,6 @@
 #include "Individu.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 #include <math.h>
 
 int vide(Individu l)
@@ -9,12 +8,15 @@ int vide(Individu l)
     return l == NULL;
 }
 
-void afficherInd(Individu l) {
-    if(!vide(l)) {
-        // Tant qu'on est pas arrivés au bout de l'Individu
-        while(l != NULL) {
+void afficherInd(Individu l)
+{
+    if (!vide(l))
+    {
+        // Tant qu'on n'est pas arrivés au bout de l'Individu
+        while (l != NULL)
+        {
             // On affiche le bit et on passe au suivant
-            printf("%d ",l->val);
+            printf("%d ", l->val);
             l = l->next;
         }
     }
@@ -23,7 +25,6 @@ void afficherInd(Individu l) {
 
 Individu ajoutq(Individu l, Bit v)
 {
-
     Bits *i = l;
     Bits *temp;
 
@@ -50,7 +51,6 @@ Individu ajoutq(Individu l, Bit v)
 
 Individu ajoutt(Individu l, Bit v)
 {
-
     Bits *temp;
     temp = (Bits *) malloc(sizeof(Bits));
     temp->val = v;
@@ -80,8 +80,8 @@ Individu initIndiv_recursif(int longIndiv)
     {
         return NULL;
     }
-    // Cas général : on ajoute en tête de la liste renvoyée par l'appel récursif de la
-    // fonction de taille voulue -1 soit la valeur 0, soit la valeur 1
+        // Cas général : on ajoute en tête de la liste renvoyée par l'appel récursif de la
+        // fonction de taille voulue -1 soit la valeur 0, soit la valeur 1
     else
     {
         return ajoutt(initIndiv_recursif(longIndiv - 1), rand() % 2);
@@ -95,7 +95,7 @@ int decodeList(Individu l)
     {
         return 0;
     }
-    // Cas général : On ajoute une puissance de 2 par bits parcouru
+        // Cas général : On ajoute une puissance de 2 par bit parcouru
     else
     {
         return (l->val + 2 * decodeList(l->next));
@@ -107,7 +107,7 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
     // Cas général
     if (!vide(l1) && !vide(l2))
     {
-        // Une chance sur 2 d'ajouter en tête de la liste résultat soit la valeur de l1, soit celle de l2
+        // Probabilité pCroise d'ajouter en tête de la liste résultat soit la valeur de l1, soit celle de l2
         if ((rand() % 100) < pCroise * 100)
         {
             return ajoutt(croiserList(pCroise, l1->next, l2->next), l1->val);
@@ -115,8 +115,9 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
         {
             return ajoutt(croiserList(pCroise, l1->next, l2->next), l2->val);
         }
-    } else
-    // Cas d'arrêt : quand une des deux listes est vide
+    }
+        // Cas d'arrêt : quand une des deux listes est vide
+    else
     {
         return NULL;
     }
@@ -131,14 +132,6 @@ float qualiteIndiv(Individu i)
 
 int longIndiv(Individu l)
 {
-    /*int compteur = 0;
-    while (!vide(l))
-    {
-        l = l->next;
-        compteur++;
-    }
-    return compteur;*/
-
     if (l != NULL)
     {
         return longIndiv(l->next) + 1;
