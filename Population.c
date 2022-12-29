@@ -8,8 +8,10 @@ int vide_pop(Population p)
 }
 
 void afficherPop(Population p) {
-    // Tant qu'on est pas arrivés au bout de la population
+
+    // Tant que l'intégralité des Individus de la Population n'ont pas été parcourus
     while(p != NULL) {
+
         // On affiche l'individu et on passe au suivant
         afficherInd(p->val);
         printf("%f\n", qualiteIndiv(p->val));
@@ -70,6 +72,7 @@ Population initPop(int taillePop)
 
 void triQualiteDec(Population premier, Population dernier)
 {
+    // Si l'intégralité de la population n'a pas déjà été testée
     if(premier != dernier)
     {
         Population pivot = partition(premier, dernier);
@@ -117,6 +120,8 @@ Population partition(Population premier, Population dernier)
 Population dernierIndiv(Population p)
 {
     Population dernier = p;
+
+    // Tant que le dernier Individu de la population n'est pas atteint
     while(!vide_pop(dernier->next))
     {
         dernier = dernier->next;
@@ -126,24 +131,9 @@ Population dernierIndiv(Population p)
 
 Population meilleursIndiv(Population p, int tSelect)
 {
-//    triQualiteDec(p, dernierIndiv(p));
-//    Population i = p;
-//    while (!vide(i) && tSelect > 0)
-//    {
-//        i = i->next;
-//        tSelect--;
-//    }
-//    while (!vide(i))
-//    {
-//        i->val = p->val;
-//        i = i->next;
-//        p = p->next;
-//    }
-
    Population p2 = NULL;
    Population p_mem, p_ret;
    Population temp = p;
-   //triQualiteDec(p, dernierIndiv(p));
 
    // On enregistre les tSelect premiers éléments de p dans p2
    while(tSelect > 0) {
@@ -160,6 +150,7 @@ Population meilleursIndiv(Population p, int tSelect)
 
    //Tant qu'on est pas arrivés au bout de p
    while(p != NULL) {
+
        // On remplace les éléments de p par ceux de p2
        while(p != NULL && p2 != NULL) {
            p->val = p2->val;
@@ -189,6 +180,7 @@ Population croiserPop(Population p)
             i = randIndiv(p);
             j = randIndiv(p);
         } while (i == j);
+
         // On ajoute à la Population fille le croisement des deux individus
         p2 = ajoutt_pop(p2, croiserList(0.5, i, j));
     }
@@ -208,11 +200,12 @@ int taillePop(Population p)
 Individu randIndiv(Population p) {
     // On prend un nombre compris dans la taille de la Population
     int a = rand()%taillePop(p);
+
     // On parcourt la Population jusqu'à trouver le a-ième individu
     while(a > 0) {
-
         a--;
         p = p->next;
     }
+    // On retourne uniquement le a-ième individu
     return p->val;
 }

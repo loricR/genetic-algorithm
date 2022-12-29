@@ -11,8 +11,13 @@ typedef struct Individus
 
 typedef Individus *Population;
 
-int vide_pop(Population p);
 
+/**
+ * @brief retourne 1 si la Population en paramètre est vide et 0 si elle ne l'est pas
+ * @param p la Population à tester
+ * @return int
+ */
+int vide_pop(Population p);
 
 /**
  * @brief afficher l'ensemble des individus présents dans une Population
@@ -50,14 +55,25 @@ Population initPop(int taillePop);
 
 /**
  * @brief trie en méthode Quicksort une Population par qualité de l'individu décroissante
- *
  * @param p la population à trier
  * @return Population
  */
 void triQualiteDec(Population premier, Population dernier);
 
+/**
+ * @brief échange les place d'individus dans une Population sous certaines conditions
+ * @param premier le pointeur sur le premier individu d'une population
+ * @param dernier le pointeur sur le dernier individu d'une population
+ * @return Population
+ */
 Population partition(Population premier, Population dernier);
 
+
+/**
+ * @brief renvoie un pointeur sur le dernier Individu d'une Population
+ * @param p la Population à traiter
+ * @return Population
+ */
 Population dernierIndiv(Population p);
 
 /**
@@ -78,7 +94,6 @@ Population meilleursIndiv(Population p, int tSelect);
  */
 Population croiserPop(Population p);
 
-
 /**
  * @brief retourne la taille d'une population
  *
@@ -86,7 +101,6 @@ Population croiserPop(Population p);
  * @return int
  */
 int taillePop(Population p);
-
 
 /**
  * @brief retourne un individu aléatoire dans une population
