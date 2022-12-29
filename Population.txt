@@ -12,12 +12,48 @@ Algo :
 	Fsi
 
 
-triQualiteDec(l : Population) -> Population
-Données: la Population à trier
-Résultat: Population triée par qualité décroissante des Individus
-Lexique:
+
+partition(p1 : Population, p2 : Population) -> Population
+Données: p1 et p2 deux individus d'une population
+Résultat: Population avec certains individus échangés
+Lexique: qualiteIndiv(Individu i) la fonction qui renvoie la qualité associée à un individu
+         val(Population p) renvoie l'individu vers lequel pointe p
+	 suc(Population p) renvoie le prochain individu d'une population
 
 Algo :
+	pivot = p1
+	actuel = p1
+	Tant que actuel != creer() et actuel != p2 Faire
+		Si(qualiteIndiv(val(actuel))) > qualiteIndiv(val(p2))) Alors
+			pivot = p1
+			temp = val(p1)
+			val(p1) = val(actuel)
+			val(actuel) = temp
+		FSi
+		actuel = suc(actuel)
+	FTantQue
+	temp = val(p1)
+	val(p1) = val(p2)
+	val(p2) = temp
+	
+	partition(p1,p2) = pivot
+
+
+triQualiteDec(p1 : Population, p2 : Population) -> void
+Données: p1 la population à trier et p2 le dernier individu de la population à trier
+Résultat: Population triée par qualité décroissante des Individus
+Lexique: partition(Population p1, Population p2) la fonction qui échange des individus dans une population sous certaines conditions
+
+Algo :
+	Si p1 != p2 Alors
+		pivot = partition(p1,p2)
+		Si pivot != creer() et suc(pivot) != creer() Alors
+			triQualiteDec(p1,p2) = triQualiteDec(suc(pivot), p2)
+		Sinon Si pivot != creer() et p1 != pivot Alors
+			triQualiteDec(p1,p2) = triQualiteDec(p1, pivot)
+		FSi
+	Fsi
+		
 
 
 meilleursIndiv(l : Population, tSelect : entier) -> Population
@@ -26,21 +62,7 @@ Données: la Population de base
 Résultat: Population des meilleurs Individus en tronquant la liste et en la complétant par recopie des tSelect premiers éléments
 Lexique:
 
-Algo :				
-    l = triQualiteDec(l)
-    i = l
-    TantQue tselect > 0 Faire
-        i = suc(i)
-        tselect = tselect - 1
-    FTantQue
-    TantQue non(vide(i)) Faire
-        val(i) = val(l)
-        i = suc(i)
-        l = suc(l)
-    FTantQue
-
-
-Algo 2 :
+Algo :
 	
 	l = triQualiteDec(l)
 	i = creer()
@@ -63,28 +85,9 @@ Algo 2 :
 croiserPop(p : Population, pCroise : réel) -> Population
 Données: la Population qu'il faut croiser, pCroise la probabilité de croisement pour un Individu
 Résultat: Population constituée d'Individus sélectionnés aléatoirement deux à deux dans la Population de base et croisés entre eux
-Lexique: rand(0, longIndiv-1) donne un Individu aléatoire dans la taile de la Population, i != j
-
-//On doit pouvoir croiser un nombre de fois défini par l'utilisateur
-//Donc la taille de la population résultat ne doit pas être définie par la taille de la population de base
-
-Algo :
-    TantQue non(vide(p)) et longIndiv >= 2 Faire
-    	Si longIndiv = 2 Alors
-	    i = p
-	    j = suc(p)
-	Sinon
-	    i = rand(0, longIndiv-1)
-    	    j = rand(0, longIndiv-1)
-	FSi
-	res = insertq(res, croiserList(pCroise, i, j)
-	p = suppIndiv(p, i)
-	p = suppIndiv(p, j)
-    FTantQue
-
 Lexique : randIndiv(p) choisit un individu aléatoire dans la population p, compteur(p) mesure la taille de la population p
 
-Algo 2 :
+Algo :
 	i = NULL
 	j = NULL
 	p2 = NULL
