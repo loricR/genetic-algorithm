@@ -14,16 +14,17 @@ typedef Individus *Population;
 
 /**
  * @brief retourne 1 si la Population en paramètre est vide et 0 si elle ne l'est pas
+ *
  * @param p la Population à tester
  * @return int
  */
 int vide_pop(Population p);
 
 /**
- * @brief afficher l'ensemble des individus présents dans une Population
+ * @brief affiche l'ensemble des individus présents dans une Population
  *
  * @param p la Population à afficher
- * @return
+ * @return void
  */
 void afficherPop(Population p);
 
@@ -55,29 +56,32 @@ Population initPop(int taillePop);
 
 /**
  * @brief trie en méthode Quicksort une Population par qualité de l'individu décroissante
- * @param p la population à trier
+ *
+ * @param premier le pointeur sur le premier individu d'une population
+ * @param dernier le pointeur sur le dernier individu d'une population
  * @return Population
  */
 void triQualiteDec(Population premier, Population dernier);
 
 /**
  * @brief échange les place d'individus dans une Population sous certaines conditions
+ *
  * @param premier le pointeur sur le premier individu d'une population
  * @param dernier le pointeur sur le dernier individu d'une population
  * @return Population
  */
 Population partition(Population premier, Population dernier);
 
-
 /**
  * @brief renvoie un pointeur sur le dernier Individu d'une Population
+ *
  * @param p la Population à traiter
  * @return Population
  */
 Population dernierIndiv(Population p);
 
 /**
- * @brief Sélectionne les meilleurs individus d'une population et les répertorie dans une population réduite
+ * @brief sélectionne les meilleurs individus d'une population et les répertorie dans une population réduite
  *
  * @param p la population initiale
  * @param tSelect le taux de sélection voulu

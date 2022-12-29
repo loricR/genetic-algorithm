@@ -1,7 +1,7 @@
 #ifndef INDIVIDU_H
 #define INDIVIDU_H
 
-#define LONG_INDIV 16   //La longueur d'individu voulue quand on créé une population
+#define LONG_INDIV 16   //La longueur d'individu voulue quand on crée une population
 
 // Bit valeur 0 ou 1
 typedef unsigned char Bit;
@@ -17,9 +17,6 @@ typedef struct Bits
 typedef Bits *Individu;
 
 
-
-
-
 /**
  * @brief Détermine si une liste est vide
  *
@@ -32,7 +29,7 @@ int vide(Individu l);
  * @brief Afficher la liste de bits composant un Individu
  *
  * @param l l'Individu à afficher'
- * @return
+ * @return void
  */
 void afficherInd(Individu l);
 
@@ -40,8 +37,8 @@ void afficherInd(Individu l);
  * @brief Ajoute un élément en tête de liste
  *
  * @param l la liste à laquelle ajouter un Bit
- * @param v la valeur à ajouter
- * @return List
+ * @param v le Bit à ajouter
+ * @return Individu
  */
 Individu ajoutq(Individu l, Bit v) ;
 
@@ -49,8 +46,8 @@ Individu ajoutq(Individu l, Bit v) ;
  * @brief Ajoute un élément en queue de liste
  *
  * @param l la liste à laquelle ajouter un Bit
- * @param v la valeur à ajouter
- * @return List
+ * @param v le Bit à ajouter
+ * @return Individu
  */
 Individu ajoutt(Individu l, Bit v);
 
@@ -73,7 +70,7 @@ Individu initIndiv_recursif(int longIndiv);
 /**
  * @brief calcule la valeur associée à la liste de bits d'un individu
  *
- * @param l la liste de bits d'un individu
+ * @param l un Individu caractérisé par une liste de bits
  * @return int
  */
 int decodeList(Individu l);
