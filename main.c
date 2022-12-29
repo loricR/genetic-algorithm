@@ -55,12 +55,13 @@ int main()
     int nGen = (rand() % 181) + 20;
     int tS = (rand() % 81) + 10;
     int tSelect = (float)(tS)/100 *  taillePop;
+    float pCroise = 0.5f;
 
     Population p = initPop(taillePop);
 
     for(int i=0; i<nGen; i++)
     {
-        p = croiserPop(p);
+        p = croiserPop(p, pCroise);
         triQualiteDec(p, dernierIndiv(p));
         p = meilleursIndiv(p, tSelect);
     }

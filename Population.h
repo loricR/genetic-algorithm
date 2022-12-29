@@ -90,9 +90,10 @@ Population meilleursIndiv(Population p, int tSelect);
  * une sous-population que la fonction renverra
  *
  * @param p la population initiale
+ * @param pCroise la probabilité de croisement
  * @return Population
  */
-Population croiserPop(Population p);
+Population croiserPop(Population p, float pCroise);
 
 /**
  * @brief retourne la taille d'une population
