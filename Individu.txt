@@ -68,12 +68,5 @@ Lexique:
 
 Algo :
 
-	qualiteIndiv(l) = - ((decodeList(l->listBits) / (2^(l->longIndiv))) * 2 + 1)^2	
+	qualiteIndiv(l) = - ((decodeList(l->listBits) / (2^(l->longIndiv))) * 2 + 1)^2
 	// Aucune idée si on doit faire en sorte que A et B puissent changer & si longIndiv paramètre d'Individu ?
-
-
-
-
-
-
-
