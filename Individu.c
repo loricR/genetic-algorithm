@@ -125,9 +125,9 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
 
 float qualiteIndiv(Individu i)
 {
-    // return powf(((decodeList(i) / pow(2, longIndiv(i))) * 2 + 1), 2);
+    return powf(((decodeList(i) / pow(2, longIndiv(i))) * 2 + 1), 2);
     // Pour la manipulation :
-    return -log10f(((decodeList(i) / pow(2, longIndiv(i))) * 4.9 + 0.1));
+    //return -log10f(((decodeList(i) / pow(2, longIndiv(i))) * 4.9 + 0.1));
 }
 
 int longIndiv(Individu l)

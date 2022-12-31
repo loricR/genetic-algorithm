@@ -47,6 +47,30 @@ Population ajoutt_pop(Population l, Individu i);
 Population ajoutq_pop(Population p, Individu i);
 
 /**
+ * @brief retourne la taille d'une population
+ *
+ * @param p la population initiale
+ * @return int
+ */
+int taillePop(Population p);
+
+/**
+ * @brief retourne un individu aléatoire dans une population
+ *
+ * @param p la population initiale
+ * @return Individu
+ */
+Individu randIndiv(Population p);
+
+/**
+ * @brief renvoie un pointeur sur le dernier Individu d'une Population
+ *
+ * @param p la Population à traiter
+ * @return Population
+ */
+Population dernierIndiv(Population p);
+
+/**
  * @brief initialise une population composée d'individus aléatoires
  *
  * @param taillePop la taille souhaitée de la population en terme d'individus la composant
@@ -73,14 +97,6 @@ void triQualiteDec(Population premier, Population dernier);
 Population partition(Population premier, Population dernier);
 
 /**
- * @brief renvoie un pointeur sur le dernier Individu d'une Population
- *
- * @param p la Population à traiter
- * @return Population
- */
-Population dernierIndiv(Population p);
-
-/**
  * @brief sélectionne les meilleurs individus d'une population et les répertorie dans une population réduite
  *
  * @param p la population initiale
@@ -98,22 +114,5 @@ Population meilleursIndiv(Population p, int tSelect);
  * @return Population
  */
 Population croiserPop(Population p, float pCroise);
-
-/**
- * @brief retourne la taille d'une population
- *
- * @param p la population initiale
- * @return int
- */
-int taillePop(Population p);
-
-/**
- * @brief retourne un individu aléatoire dans une population
- *
- * @param p la population initiale
- * @return Individu
- */
-Individu randIndiv(Population p);
-
 
 #endif
