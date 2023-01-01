@@ -4,7 +4,7 @@
 https://docs.google.com/document/d/1sEoBOtt0RUNII2THmEehxezxlCvopfiUlR470SkHu3o/edit?usp=sharing
 
 
-ajoutt_indiv(Individu, Bit) -> Individu, Fonction qui ajoute un Bit en tête d'une liste de Bits
+ajoutt_indiv(Individu, Bit) -> Individu, Fonction qui ajoute un Bit en tête d'une liste de Bits\n
 ajoutq_indiv(Individu, Bit) -> Individu, Fonction qui ajoute un Bit en fin d'une liste de Bits
 vide_indiv(Individu) -> booléen, Fonction qui retourne vrai si Individu est vide
 creer_indiv() -> Individu, Fonction qui retourne un Individu vide
