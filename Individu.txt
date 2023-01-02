@@ -2,13 +2,19 @@ initIndiv() -> Individu
 Données:
 Résultat: liste de bits générée aléatoirement
 Lexique:
+    creer_indiv() -> Individu, Fonction qui retourne un Individu vide
+    longIndiv, entier correspondant à la taille d'Individu voulue
+    ajoutq_indiv(Individu, Bit) -> Individu, Fonction qui ajoute un Bit en fin d'une liste de Bits
+    != correspond au test "différent"
+    % correspond à l'opération "reste de la division euclidienne" ou "modulo"
+    rand(), fonction qui retourne un entier aléatoire
 
 Algo :
 
-	List l := creer()
+	List l = creer_indiv()
 	Tant que (longIndiv != 0) Faire
-		l = ajoutertq(l,rand()%2)
-		longIndiv := longIndiv - 1	
+		l = ajoutertq_indiv(l,rand()%2)
+		longIndiv = longIndiv - 1
 	Fin Tant que
 
 
@@ -16,28 +22,34 @@ initIndiv_recursif(longIndiv : entier) -> Individu
 Données: longIndiv, la longueur souhaitée de la liste de bits
 Résultat: liste de bits générée aléatoirement
 Lexique:
+    creer_indiv() -> Individu, Fonction qui retourne un Individu vide
+    ajoutt_indiv(Individu, Bit) -> Individu, Fonction qui ajoute un Bit en tête d'une liste de Bits
+    rand(), fonction qui retourne un entier aléatoire
+    % correspond à l'opération "reste de la division euclidienne" ou "modulo"
+    == correspond au test d'égalité
 
-Algo :
-
-	Si longIndiv == 0 Alors 
-		initIndiv_recursif(longIndiv) := creer()
+	Si longIndiv == 0 Alors
+		initIndiv_recursif(longIndiv) = creer_indiv()
 	Sinon
-		initIndiv_recursif(longIndiv) := ajoutertt(initIndiv_recursif(longIndiv-1), rand()%2)
+		initIndiv_recursif(longIndiv) = ajoutertt_indiv(initIndiv_recursif(longIndiv-1), rand()%2)
 	Fsi
 
 	
 
-decodeListe(l : Individu) -> entier
+decodeList(l : Individu) -> entier
 Données: la liste de bits à décoder
 Résultat: l'entier correspondant à la liste de bits donnée
 Lexique:
+    vide_indiv(Individu) -> booléen, Fonction qui retourne vrai si Individu est vide
+    val_indiv(Individu) -> Bit, Fonction qui retourne la valeur d'un Individu
+    suc_indiv(Individu) -> Individu, Fonction qui retourne l'élément suivant
 
 Algo :
 
-	Si vide(l) Alors
-		decodeList(l) := 0
+	Si vide_indiv(l) Alors
+		decodeList(l) = 0
 	Sinon
-	    decodeList(l) := val(l) + 2*decodeList(suc(l))
+	    decodeList(l) = val_indiv(l) + 2*decodeList(suc_indiv(l))
 	Fsi
 				
 				
@@ -46,17 +58,23 @@ croiserListes(pCroise : réel, l1 : Individu, l2 : Individu) -> Individu
 Données: pCroise probabilité d'intervertir des éléments des 2 listes, l1 et l2 deux liste de bits
 Résultat: l3 la liste de bits caractérisant l'individu résultant des éléments intervertis de l1 et l2
 Lexique:
-	
+	vide_indiv(Individu) -> booléen, Fonction qui retourne vrai si Individu est vide
+	ajoutt_indiv(Individu, Bit) -> Individu, Fonction qui ajoute un Bit en tête d'une liste de Bits
+	val_indiv(Individu) -> Bit, Fonction qui retourne la valeur d'un Individu
+    suc_indiv(Individu) -> Individu, Fonction qui retourne l'élément suivant
+    creer_indiv() -> Individu, Fonction qui retourne un Individu vide
+    rand_reel(), fonction qui retourne un réel aléatoire entre 0 et 1
+
 Algo :
 
-	Si non(vide(l1)) et non(vide(l2)) Alors
-		Si réel aléatoire entre 0 et 1 <= pCroise Alors
-			croiserListes(pCroise, l1, l2) = ajoutt(croiserListes(pCroise, suc(l1), suc(l2)), val(l1))
+	Si non(vide_indiv(l1)) et non(vide_indiv(l2)) Alors
+		Si rand_reel() <= pCroise Alors
+			croiserListes(pCroise, l1, l2) = ajoutt_indiv(croiserListes(pCroise, suc_indiv(l1), suc_indiv(l2)), val_indiv(l1))
 		Sinon
-			croiserListes(pCroise, l1, l2) = ajoutt(croiserListes(pCroise, suc(l1), suc(l2)), val(l2))
+			croiserListes(pCroise, l1, l2) = ajoutt_indiv(croiserListes(pCroise, suc_indiv(l1), suc_indiv(l2)), val_indiv(l2))
 		Fsi
 	Sinon
-		croiserListes(pCroise, l1, l2) := creer()
+		croiserListes(pCroise, l1, l2) = creer_indiv()
 	Fsi
 		
 
@@ -65,8 +83,9 @@ qualiteIndiv(l : Individu) -> réel
 Données: la liste de bits Individu à calculer sa qualité
 Résultat: réel correspondant à la qualité de l'individu donné
 Lexique:
+    longIndiv, entier correspondant à la taille de l'Individu
 
 Algo :
 
-	qualiteIndiv(l) = - ((decodeList(l->listBits) / (2^(l->longIndiv))) * 2 + 1)^2
+	qualiteIndiv(l) = - ((decodeList(l) / (2^(longIndiv))) * 2 + 1)^2
 	// Aucune idée si on doit faire en sorte que A et B puissent changer & si longIndiv paramètre d'Individu ?
