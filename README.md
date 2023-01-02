@@ -3,6 +3,15 @@
 # Rapport
 https://docs.google.com/document/d/1sEoBOtt0RUNII2THmEehxezxlCvopfiUlR470SkHu3o/edit?usp=sharing
 
+#Lexique
+
+== correspond au test d'égalité
+
+!= correspond au test "différent"
+
+% correspond à l'opération "reste de la division euclidienne" ou "modulo"
+
+rand(), fonction qui retourne un entier aléatoire
 
 ajoutt_indiv(Individu, Bit) -> Individu, Fonction qui ajoute un Bit en tête d'une liste de Bits
 
