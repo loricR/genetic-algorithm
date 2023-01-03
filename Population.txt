@@ -48,14 +48,13 @@ Lexique:
 
 
 triQualiteDec(p1 : Population, p2 : Population) -> void
-Donnees: p1 la population a trier et p2 le dernier individu de la population a trier
+Donnees: p1 le dernier élément de la population à trier et p2 le dernier élément de la population à trier
 Resultat: Population triee par qualite decroissante des Individus
 Lexique: 
      partition(Population p1, Population p2) la fonction qui echange des individus dans 
      une population sous certaines conditions
      creer_pop() -> Population, Fonction qui retourne une Population vide
      suc_pop(Population) -> Population, Fonction qui retourne l'element suivant
-
 
 	Si p1 != p2 Alors
 		pivot = partition(p1,p2)

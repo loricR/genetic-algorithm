@@ -35,7 +35,7 @@ void afficherPop(Population p);
  * @param p la Population à laquelle on veut ajouter un Individu
  * @return Population
  */
-Population ajoutt_pop(Population l, Individu i);
+Population ajoutt_pop(Population p, Individu i);
 
 /**
  * @brief ajoute un Individu en queue d'une Population
@@ -83,7 +83,6 @@ Population initPop(int taillePop);
  *
  * @param premier le pointeur sur le premier individu d'une population
  * @param dernier le pointeur sur le dernier individu d'une population
- * @return Population
  */
 void triQualiteDec(Population premier, Population dernier);
 

@@ -2,6 +2,8 @@
 #define INDIVIDU_H
 
 #define LONG_INDIV 8   //La longueur d'individu voulue quand on crée une population
+#define A -1           //Valeur de A pour le calcul de la qualité
+#define B 1            //Valeur de B pour le calcul de la qualité
 
 // Bit valeur 0 ou 1
 typedef unsigned char Bit;
@@ -29,7 +31,6 @@ int vide(Individu l);
  * @brief Afficher la liste de bits composant un Individu
  *
  * @param l l'Individu à afficher'
- * @return void
  */
 void afficherInd(Individu l);
 

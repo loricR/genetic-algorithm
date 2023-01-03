@@ -10,14 +10,15 @@ int vide(Individu l)
 
 void afficherInd(Individu l)
 {
-    if (!vide(l))
+    Individu temp = l;
+    if (!vide(temp))
     {
         // Tant qu'on n'est pas arrivés au bout de l'Individu
-        while (l != NULL)
+        while (temp != NULL)
         {
             // On affiche le bit et on passe au suivant
-            printf("%d ", l->val);
-            l = l->next;
+            printf("%d ", temp->val);
+            temp = temp->next;
         }
     }
     printf("\n");
@@ -111,7 +112,8 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
         if ((rand() % 100) < pCroise * 100)
         {
             return ajoutt(croiserList(pCroise, l1->next, l2->next), l1->val);
-        } else
+        }
+        else
         {
             return ajoutt(croiserList(pCroise, l1->next, l2->next), l2->val);
         }
@@ -125,9 +127,11 @@ Individu croiserList(float pCroise, Individu l1, Individu l2)
 
 float qualiteIndiv(Individu i)
 {
-    return powf(((decodeList(i) / pow(2, longIndiv(i))) * 2 + 1), 2);
-    // Pour la manipulation :
-    //return -log10f(((decodeList(i) / pow(2, longIndiv(i))) * 4.9 + 0.1));
+    return -powf(((decodeList(i) / pow(2, longIndiv(i))) * (B - A) + A), 2);   //La formule de base
+
+    //Pour la manipulation :
+    //Modifier les constantes A et B dans Individu.h
+    //return -logf(((decodeList(i) / pow(2, longIndiv(i))) * (B - A) + A));   //La formule pour la manipulation
 }
 
 int longIndiv(Individu l)
@@ -135,5 +139,9 @@ int longIndiv(Individu l)
     if (l != NULL)
     {
         return longIndiv(l->next) + 1;
-    } else return 0;
+    }
+    else
+    {
+        return 0;
+    }
 }
