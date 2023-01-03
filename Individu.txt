@@ -11,7 +11,7 @@ Lexique:
 
 Algo :
 
-	List l = creer_indiv()
+	l = creer_indiv()
 	Tant que (longIndiv != 0) Faire
 		l = ajoutertq_indiv(l,rand()%2)
 		longIndiv = longIndiv - 1
@@ -88,5 +88,21 @@ Lexique:
     longIndiv, entier correspondant à la taille de l'Individu
 
 Algo :
-
 	qualiteIndiv(l) = - ((decodeList(l) / (2^(longIndiv))) * (B - A) + A)^2
+
+
+
+longIndiv(l : Individu) -> entier
+Données : l'Individu dont on souhaite connaître le nombre de Bits
+Résultat : le nombre de Bits composant l'Individu en paramètre
+Lexique :
+	!= correspond au test "différent"
+	suc_indiv(Individu) -> Individu, Fonction qui retourne l'élément suivant
+	creer_indiv() -> Individu, Fonction qui retourne un Individu vide
+
+
+Si l != creer_indiv() Alors
+	longIndiv(l) = longIndiv(suc_indiv(l)) + 1
+Sinon
+	longIndiv(l) = 0
+FSi

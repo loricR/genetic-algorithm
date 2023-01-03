@@ -1,106 +1,135 @@
 initPop(taillePop : entier) -> Population
-Données: taillePop un entier représentant la taille voulue de la population (entre 20 et 200 selon l'énoncé)
-Résultat: Population (une liste d'Individus) générée aléatoirement
-Lexique:
+Donnees: taillePop un entier representant la taille voulue de la population
+Resultat: Population (une liste d'Individus) generee aleatoirement
+Lexique: 
+     creer_pop() -> Population, Fonction qui retourne une Population vide
+     ajoutt_pop(Population, Individu) -> Population, Fonction qui ajoute un Individu 
+     en tete d'une liste d'Individus
+     initIndiv_recursif(longIndiv : entier) -> Individu, Fonction qui retourne 
+     un Individu de taille longIndiv
 
-Algo :
 
 	Si taillePop == 0 Alors 
-		initPop(taillePop) := creer()
+		initPop(taillePop) = creer_pop()
 	Sinon
-		initPop(taillePop) := ajoutertt(initPop(taillePop-1), initIndiv_recursif(8))
+		initPop(taillePop) = ajoutt_pop(initPop(taillePop-1), initIndiv_recursif(8))
 	Fsi
 
 
 
 partition(p1 : Population, p2 : Population) -> Population
-Données: p1 et p2 deux individus d'une population
-Résultat: Population avec certains individus échangés
-Lexique: qualiteIndiv(Individu i) la fonction qui renvoie la qualité associée à un individu
-         val(Population p) renvoie l'individu vers lequel pointe p
-	 suc(Population p) renvoie le prochain individu d'une population
+Donnees: p1 et p2 deux individus d'une population
+Resultat: Population avec certains individus echanges
+Lexique: 
+     qualiteIndiv(Individu i) la fonction qui renvoie la qualite associee a un individu
+     creer_pop() -> Population, Fonction qui retourne une Population vide
+     val_pop(Population) -> Individu, Fonction qui retourne la valeur d'une Population
+     suc_pop(Population) -> Population, Fonction qui retourne l'element suivant
 
-Algo :
+
 	pivot = p1
 	actuel = p1
-	Tant que actuel != creer() et actuel != p2 Faire
-		Si(qualiteIndiv(val(actuel))) > qualiteIndiv(val(p2))) Alors
+	Tant que actuel != creer_pop() et actuel != p2 Faire
+		Si(qualiteIndiv(val_pop(actuel))) > qualiteIndiv(val_pop(p2))) Alors
 			pivot = p1
-			temp = val(p1)
-			val(p1) = val(actuel)
-			val(actuel) = temp
+			temp = val_pop(p1)
+			val_pop(p1) = val_pop(actuel)
+			val_pop(actuel) = temp
 		FSi
-		actuel = suc(actuel)
+		actuel = suc_pop(actuel)
 	FTantQue
-	temp = val(p1)
-	val(p1) = val(p2)
-	val(p2) = temp
+	temp = val_pop(p1)
+	val_pop(p1) = val_pop(p2)
+	val_pop(p2) = temp
 	
 	partition(p1,p2) = pivot
 
 
-triQualiteDec(p1 : Population, p2 : Population) -> void
-Données: p1 le dernier élément de la population à trier et p2 le dernier élément de la population à trier
-Résultat: Population triée par qualité décroissante des Individus
-Lexique: partition(Population p1, Population p2) la fonction qui échange des individus dans une population sous certaines conditions
 
-Algo :
+
+triQualiteDec(p1 : Population, p2 : Population) -> void
+Donnees: p1 le dernier élément de la population à trier et p2 le dernier élément de la population à trier
+Resultat: Population triee par qualite decroissante des Individus
+Lexique: 
+     partition(Population p1, Population p2) la fonction qui echange des individus dans 
+     une population sous certaines conditions
+     creer_pop() -> Population, Fonction qui retourne une Population vide
+     suc_pop(Population) -> Population, Fonction qui retourne l'element suivant
+
 	Si p1 != p2 Alors
 		pivot = partition(p1,p2)
-		Si pivot != creer() et suc(pivot) != creer() Alors
-			triQualiteDec(p1,p2) = triQualiteDec(suc(pivot), p2)
-		Sinon Si pivot != creer() et p1 != pivot Alors
+		Si pivot != creer_pop() et suc(pivot) != creer_pop() Alors
+			triQualiteDec(p1,p2) = triQualiteDec(suc_pop(pivot), p2)
+		Sinon Si pivot != creer_pop() et p1 != pivot Alors
 			triQualiteDec(p1,p2) = triQualiteDec(p1, pivot)
 		FSi
-	Fsi
-		
+	Fsi		
 
 
 meilleursIndiv(l : Population, tSelect : entier) -> Population
-Données: la Population de base
-         entier correspondant à l'endroit où il faut tronquer la Population
-Résultat: Population des meilleurs Individus en tronquant la liste et en la complétant par recopie des tSelect premiers éléments
+Donnees: l la Population de base
+         tSelect l'entier correspondant a l'endroit ou il faut tronquer la Population
+Resultat: Population des meilleurs Individus en tronquant la liste et en la completant 
+par recopie des tSelect premiers elements
 Lexique:
+     TriQualiteDec(Population) -> Population, Fonction qui trie une Population par 
+     ordre decroissant de qualite d'Individu
+     vide_pop(Population) -> booleen, Fonction qui retourne vrai si une Population est vide
+     creer_pop() -> Population, Fonction qui retourne une Population vide
+     ajoutq_pop(Population, Individu) -> Population, Fonction qui ajoute un Individu
+     en fin d'une liste d'Individus
+     val_pop(Population) -> Individu, Fonction qui retourne la valeur d'une Population
+     suc_pop(Population) -> Population, Fonction qui retourne l'element suivant
+     tete_pop(Population) -> Population, Fonction qui retourne la tete d'une Population
 
-Algo :
-	
+
 	l = triQualiteDec(l)
-	i = creer()
+	i = creer_pop()
 	TantQue tSelect > 0 Faire
-		i = ajouterq(i, val(l))
-		l = succ(l)
+		i = ajoutq_pop(i, val(l))
+		l = suc(l)
 		tSelect = tSelect-1
 	FTantQue
-	TantQue non(vide(l)) Faire
-		TantQue non(vide(i)) et non(vide(l)) Faire
-        		val(l) = val(i)
-        		i = suc(i)
-        		l = suc(l)
+	TantQue non(vide_pop(l)) Faire
+		TantQue non(vide_pop(i)) et non(vide_pop(l)) Faire
+        		val_pop(l) = val_pop(i)
+        		i = suc_pop(i)
+        		l = suc_pop(l)
 		FTantQue
-		i = tete(i)
+		i = tete_pop(i)
    	 FTantQue
 		
-		
 
-croiserPop(p : Population, pCroise : réel) -> Population
-Données: la Population qu'il faut croiser, pCroise la probabilité de croisement pour un Individu
-Résultat: Population constituée d'Individus sélectionnés aléatoirement deux à deux dans la Population de base et croisés entre eux
-Lexique : randIndiv(p) choisit un individu aléatoire dans la population p, compteur(p) mesure la taille de la population p
 
-Algo :
-	i = NULL
-	j = NULL
-	p2 = NULL
-	TantQue compteur(p2) != compteur(p) Faire
+croiserPop(p : Population, pCroise : reel) -> Population
+Donnees: p la Population qu'il faut croiser
+         pCroise la probabilite de croisement pour un Individu
+Resultat: Population constituee d'Individus selectionnes aleatoirement
+deux a deux dans la Population de base et croises entre eux
+Lexique : 
+     creer_indiv() -> Individu, Fonction qui retourne un Individu vide
+     randIndiv(Population) -> Individu, Fonction qui choisit un individu aleatoire 
+     dans une Population
+     compteur_pop(Population) -> Entier, Fonction qui mesure la taille de la population p
+     creer_pop() -> Population, Fonction qui retourne une Population vide
+     ajoutq_pop(Population, Individu) -> Population, Fonction qui ajoute un Individu 
+     en fin d'une liste d'Individus
+     croiserListes(reel, Individu, Individu) -> Individu, Fonction qui renvoie un Individu
+     comme melange des deux Individus en parametres
+
+
+	i = creer_indiv()
+	j = creer_indiv()
+	p2 = creer_pop()
+	TantQue compteur_pop(p2) != compteur_pop(p) Faire
 		Faire 
 			i = randIndiv(p)
 			j = randIndiv(p)		
 		TantQue i == j 			
 		FinFaireTantQue
 
-		p2 = insertq(p2, croiserList(pCroise, i, j)
+		p2 = ajoutq_pop(p2, croiserListes(pCroise, i, j)
 	FTantQue
-
 
 
 
