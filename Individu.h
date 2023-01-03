@@ -2,7 +2,7 @@
 #define INDIVIDU_H
 
 #define LONG_INDIV 8   //La longueur d'individu voulue quand on crée une population
-#define A -1           //Valeur de A pour le calcul de la qualité
+#define A (-1)           //Valeur de A pour le calcul de la qualité
 #define B 1            //Valeur de B pour le calcul de la qualité
 
 // Bit valeur 0 ou 1
