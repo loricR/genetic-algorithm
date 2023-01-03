@@ -40,7 +40,7 @@ Algo :
 
 
 triQualiteDec(p1 : Population, p2 : Population) -> void
-Données: p1 la population à trier et p2 le dernier individu de la population à trier
+Données: p1 le dernier élément de la population à trier et p2 le dernier élément de la population à trier
 Résultat: Population triée par qualité décroissante des Individus
 Lexique: partition(Population p1, Population p2) la fonction qui échange des individus dans une population sous certaines conditions
 

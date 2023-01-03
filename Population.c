@@ -19,13 +19,13 @@ void afficherPop(Population p)
     }
 }
 
-Population ajoutt_pop(Population l, Individu i)
+Population ajoutt_pop(Population p, Individu i)
 {
     // Même principe que ajoutt dans Individu.c
     Individus *temp;
     temp = (Individus *) malloc(sizeof(Individus));
     temp->val = i;
-    temp->next = l;
+    temp->next = p;
 
     return temp;
 }
@@ -193,7 +193,11 @@ int taillePop(Population p)
     if (p != NULL)
     {
         return taillePop(p->next) + 1;
-    } else return 0;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 
