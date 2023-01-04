@@ -25,5 +25,7 @@ int main()
     printf("qualite : %f\n", qualiteIndiv(p->val));
     printf("nGen : %d / taillePop : %d / tSelect : %d",nGen,taillePop, tSelect);
 
+    getchar();  //Pour que le programme ne s'arrête pas tant que l'on n'appuie pas sur une touche
+
     return 0;
 }
